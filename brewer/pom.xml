@@ -14,29 +14,35 @@
   		
   		<failOnMissingWebXml>false</failOnMissingWebXml>
   		<java.version>1.8</java.version>
-  		<maven-compiler-pluging.version>3.2</maven-compiler-pluging.version>
+  		<maven-compiler-pluging.version>3.2</maven-compiler-pluging.version>  		
+		<flyway-maven-plugin.version>4.0.2</flyway-maven-plugin.version>		
+  		<mysql-connector-java.version>8.0.15</mysql-connector-java.version>
   		
   		 <!-- Spring MVC -->
   		<spring-framework.version>4.3.0.RELEASE</spring-framework.version>
   		
   		<!-- Servlet API -->
   		<servlet.version>3.1.0</servlet.version>
-  		
-  		
+  		  		
   		 <!-- Thymeleaf -->  		 
   		<thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>	
   		
   		 <!-- Thymeleaf - Layout Dialect-->  
   		<thymeleaf-layout-dialect.version>2.0.0</thymeleaf-layout-dialect.version>
-  		
-  		
+  		  		
   		<!-- Bean Validator / Hibernate Validator -->
   		<hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
-  		
-  		
+  		  		
   		<!-- Logging -->
 		<log4j.version>2.6</log4j.version>
 		<jcl-over-slf4j.version>1.7.21</jcl-over-slf4j.version>
+  		
+  		
+  		<!-- JPA / Hibernate  -->
+  		<hibernate.version>5.1.0.Final</hibernate.version>  		  		 		
+  		
+  		<!-- Spring  Data JPA -->
+  		<spring-data-jpa.version>1.10.2.RELEASE</spring-data-jpa.version>  	
   		
   	</properties>
   	
@@ -51,6 +57,16 @@
   					<target>${java.version}</target>
   				</configuration>
   			</plugin>
+  			
+  			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>${flyway-maven-plugin.version}</version>
+				<configuration>
+					<driver>com.mysql.cj.jdbc.Driver</driver>
+			   </configuration>
+			</plugin>
+  			
   		</plugins>
   	</build>
   	
@@ -139,6 +155,40 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>${jcl-over-slf4j.version}</version>
+		</dependency>
+  	
+  	
+  		<!-- JPA / Hibernate -->
+  		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+			<scope>compile</scope>
+		</dependency>
+  	
+  	
+  		<!-- Hibernate - Java 8 support  -->
+  		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-java8</artifactId>
+			<version>${hibernate.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		<!-- Mysql Driver  -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql-connector-java.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- Spring  Data JPA -->		
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${spring-data-jpa.version}</version>
+			<scope>provided</scope>
 		</dependency>
   	
   </dependencies>
