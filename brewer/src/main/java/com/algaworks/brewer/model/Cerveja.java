@@ -41,7 +41,7 @@ public class Cerveja {
 	
 	private BigDecimal comissao;
 	
-	@Column(name="quantidade Estoque")
+	@Column(name="quantidade_estoque")
 	private Integer quantidadeEstoque;
 	
 	@Enumerated(EnumType.STRING)
